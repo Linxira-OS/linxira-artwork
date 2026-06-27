@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Linxira L mark">
+  <defs>
+    <linearGradient id="l-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="50%" stop-color="#22c7da"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="l-beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f0fdfa" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#a5b4fc" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="l-prism" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <filter id="l-glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- L 字母主体 - 带棱镜切割感 -->
+  <g filter="url(#l-glow)">
+    <!-- 竖笔 - 左侧 -->
+    <path d="M120 80 L200 80 L200 420 L120 420 Z" fill="url(#l-grad)"/>
+    
+    <!-- 横笔 - 底部 -->
+    <path d="M120 340 L380 340 L380 420 L120 420 Z" fill="url(#l-grad)"/>
+    
+    <!-- 棱镜切割线 - 竖笔上的光谱折射 -->
+    <path d="M160 80 L160 340" stroke="url(#l-beam)" stroke-width="3" opacity="0.6"/>
+    
+    <!-- 棱镜折射光束 - 从 L 的转角处发出 -->
+    <path d="M200 340 L320 200" stroke="url(#l-beam)" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+    <path d="M200 360 L340 240" stroke="#f0abfc" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+    <path d="M200 380 L350 280" stroke="#93c5fd" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+    
+    <!-- 转角处的棱镜三角 -->
+    <polygon points="120,340 200,340 160,280" fill="url(#l-prism)" opacity="0.7"/>
+    
+    <!-- 光谱色散点 -->
+    <circle cx="320" cy="200" r="6" fill="#14b8a6" opacity="0.8"/>
+    <circle cx="340" cy="240" r="5" fill="#22c7da" opacity="0.6"/>
+    <circle cx="350" cy="280" r="4" fill="#8b5cf6" opacity="0.5"/>
+  </g>
+</svg>

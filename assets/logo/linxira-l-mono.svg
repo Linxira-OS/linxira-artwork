@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Linxira L mark monochrome">
+  <!-- L 字母主体 - 单色版 -->
+  <path d="M120 80 L200 80 L200 340 L380 340 L380 420 L120 420 Z" fill="#ffffff"/>
+  
+  <!-- 棱镜切割线 -->
+  <line x1="160" y1="80" x2="160" y2="340" stroke="#ffffff" stroke-width="3" opacity="0.5"/>
+  
+  <!-- 光束 -->
+  <line x1="200" y1="340" x2="320" y2="200" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+</svg>
