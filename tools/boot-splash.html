@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linxira OS Boot Splash</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #101419;
+      color: #f3f6f7;
+      font-family: "Segoe UI", "Noto Sans", sans-serif;
+    }
+    .frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #101419;
+    }
+    .rail {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 18px;
+      height: 100%;
+      background: #12b8be;
+    }
+    .rule-top,
+    .rule-bottom {
+      position: absolute;
+      left: 5%;
+      right: 5%;
+      height: 1px;
+      background: #3a424a;
+    }
+    .rule-top { top: 8%; }
+    .rule-bottom { bottom: 8%; }
+    .identity {
+      position: absolute;
+      top: 50%;
+      right: 8%;
+      width: 28%;
+      transform: translateY(-50%);
+      text-align: center;
+    }
+    .identity img {
+      display: block;
+      width: 54%;
+      height: auto;
+      margin: 0 auto 7%;
+    }
+    .name {
+      font-size: clamp(28px, 3.2vw, 64px);
+      font-weight: 650;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .edition {
+      margin-top: 5%;
+      color: #aab4bc;
+      font-size: clamp(13px, 1vw, 22px);
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    .marker {
+      position: absolute;
+      left: 5%;
+      bottom: 4.5%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #8f9aa3;
+      font-size: clamp(11px, 0.8vw, 17px);
+      letter-spacing: 0;
+    }
+    .marker::before {
+      content: "";
+      width: 28px;
+      height: 4px;
+      background: #7ecb70;
+    }
+  </style>
+</head>
+<body>
+  <main class="frame">
+    <div class="rule-top"></div>
+    <div class="rule-bottom"></div>
+    <section class="identity" aria-label="Linxira OS">
+      <img src="../usr/share/linxira/linxira-logo.svg" alt="">
+      <div class="name">Linxira OS</div>
+      <div class="edition">Live and installation environment</div>
+    </section>
+    <div class="marker">UPSTREAM-FIRST DESKTOP LINUX</div>
+    <div class="rail"></div>
+  </main>
+</body>
+</html>
