@@ -2,6 +2,14 @@
 
 Linxira OS 官方美术资源仓库。包含品牌 Logo、壁纸、图标及欢迎横幅。
 
+## 版权与商标
+
+本仓库中的 Linxira、Linxira OS、Scale L、Logo、图标、壁纸、Plymouth
+主题和欢迎横幅属于 Linxira OS 品牌资产，默认保留全部权利。未经书面许可，
+不得将这些资产用于其他发行版、产品或组织的品牌标识，也不得暗示官方背书。
+允许在未修改的 Linxira OS 镜像或未修改的 Linxira 软件包中随附分发，但必须保留
+版权和商标声明。完整政策见 [`TRADEMARKS.md`](TRADEMARKS.md)。
+
 ## 品牌色
 
 - 青绿 `#20B8B0` — 主标识与科学仪器感
