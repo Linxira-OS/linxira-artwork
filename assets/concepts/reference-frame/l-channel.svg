@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Linxira reference frame L, channel variant">
+  <path fill="#20B8B0" d="M112 64H224V336H448V448H112Z"/>
+  <path d="M164 112V392H392" fill="none" stroke="#0E1417" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
+  <circle cx="392" cy="392" r="9" fill="#F36F5D"/>
+</svg>

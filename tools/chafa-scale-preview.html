@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linxira Scale L: Terminal Character Rendering</title>
+  <style>
+    :root { --ink: #101519; --panel: #182126; --line: #3D4A50; --paper: #F1F5F5; --muted: #AAB7BC; --teal: #20B8B0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--ink); color: var(--paper); font-family: "Segoe UI", "Noto Sans", sans-serif; }
+    main { width: min(1440px, 100%); margin: 0 auto; padding: 48px 56px 72px; }
+    header { display: flex; align-items: end; justify-content: space-between; gap: 28px; border-bottom: 1px solid var(--line); padding-bottom: 25px; }
+    h1 { margin: 0; font-size: 38px; font-weight: 650; letter-spacing: 0; }
+    header p { max-width: 560px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.55; text-align: right; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
+    article { border: 1px solid var(--line); background: var(--panel); }
+    .title { padding: 18px 20px; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0 0 5px; font-size: 21px; font-weight: 650; }
+    .title p { margin: 0; color: var(--muted); font-family: ui-monospace, "Cascadia Mono", monospace; font-size: 13px; }
+    .terminal { min-height: 300px; padding: 30px 24px; background: #090D0F; }
+    .terminal pre { margin: 0; overflow: auto; color: #E7F3F3; font-family: "Cascadia Mono", "Noto Sans Mono", monospace; font-size: 15px; line-height: 1; white-space: pre; }
+    .system { margin-top: 24px; color: #B8C7CB; font-family: "Cascadia Mono", "Noto Sans Mono", monospace; font-size: 12px; line-height: 1.55; }
+    .system b { color: var(--teal); font-weight: 650; }
+    .note { min-height: 92px; margin: 0; padding: 16px 20px 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .note strong { color: var(--paper); }
+    footer { margin-top: 26px; color: var(--muted); font-size: 15px; }
+    @media (max-width: 1000px) { main { padding: 30px 20px 48px; } header { display: block; } header p { margin-top: 12px; text-align: left; } .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Scale L / Character Rendering</h1>
+      <p>Actual Chafa output from the Scale L SVG. The source is first rendered to PNG, then encoded as true-color Unicode terminal cells.</p>
+    </header>
+    <section class="grid">
+      <article>
+        <div class="title"><h2>01 Block + Geometric</h2><p>stable silhouette / recommended</p></div>
+        <div class="terminal"><pre data-source="../assets/concepts/reference-frame/chafa/block-geometric.html"></pre><div class="system"><b>OS</b>       Linxira OS<br><b>Kernel</b>   7.1.3-arch1-3<br><b>Desktop</b>  Plasma 6</div></div>
+        <p class="note"><strong>Best default:</strong> uses widely supported block geometry, preserves the L shape and still carries the internal scale.</p>
+      </article>
+      <article>
+        <div class="title"><h2>02 Quad + Sextant</h2><p>more detail / font-dependent</p></div>
+        <div class="terminal"><pre data-source="../assets/concepts/reference-frame/chafa/quad-sextant.html"></pre><div class="system"><b>OS</b>       Linxira OS<br><b>Kernel</b>   7.1.3-arch1-3<br><b>Desktop</b>  Plasma 6</div></div>
+        <p class="note"><strong>Higher local detail:</strong> needs a font with newer Unicode quadrant and sextant glyphs, so it is not the robust default.</p>
+      </article>
+      <article>
+        <div class="title"><h2>03 Braille + Technical</h2><p>highest density / specialist mode</p></div>
+        <div class="terminal"><pre data-source="../assets/concepts/reference-frame/chafa/braille-technical.html"></pre><div class="system"><b>OS</b>       Linxira OS<br><b>Kernel</b>   7.1.3-arch1-3<br><b>Desktop</b>  Plasma 6</div></div>
+        <p class="note"><strong>Most information-dense:</strong> visually interesting, but technical glyph substitution makes it unsuitable as a universal default.</p>
+      </article>
+    </section>
+    <footer>Production path: SVG master -> PNG render -> Chafa ANSI output. The rendered ANSI file is packaged, so Fastfetch does not need a runtime converter.</footer>
+  </main>
+  <script>
+    for (const target of document.querySelectorAll("[data-source]")) {
+      fetch(target.dataset.source).then((response) => response.text()).then((html) => {
+        target.innerHTML = html;
+      });
+    }
+  </script>
+</body>
+</html>

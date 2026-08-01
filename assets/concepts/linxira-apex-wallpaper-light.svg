@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3840 2160" role="img" aria-label="Linxira Apex light wallpaper concept">
+  <defs>
+    <pattern id="grid" width="96" height="96" patternUnits="userSpaceOnUse">
+      <path d="M96 0H0v96" fill="none" stroke="#66757C" stroke-width="2" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="3840" height="2160" fill="#EEF3F4"/>
+  <rect width="3840" height="2160" fill="url(#grid)"/>
+  <path d="M0 1680h930l260-286 298 142 360-492 316 226 366-612 340 302 362-516 608 0" fill="none" stroke="#7F8D92" stroke-width="6" opacity="0.28"/>
+  <path d="M0 1740h1002l226-246 270 128 362-492 306 222 362-610 338 300 356-514h618" fill="none" stroke="#168F8A" stroke-width="8" opacity="0.58"/>
+  <g transform="translate(2690 650) scale(1.85)">
+    <path fill="#168F8A" d="M282 48 372 138 234 276v50h192l-72 94H122V214Z"/>
+    <path fill="#D9E5E6" d="m282 116 36 38-88 88-28-28Z"/>
+    <path fill="#D95E4E" d="m354 326 72 0-72 94-72 0Z"/>
+  </g>
+  <g fill="#D95E4E">
+    <circle cx="1498" cy="1622" r="13"/>
+    <circle cx="2166" cy="1352" r="13"/>
+    <circle cx="2866" cy="1042" r="13"/>
+  </g>
+  <text x="2860" y="1605" fill="#182126" font-family="Noto Sans, sans-serif" font-size="92" font-weight="650" letter-spacing="0">Linxira OS</text>
+  <text x="2865" y="1680" fill="#5E6B70" font-family="Noto Sans, sans-serif" font-size="32" letter-spacing="0">SCIENTIFIC WORKSTATION</text>
+</svg>

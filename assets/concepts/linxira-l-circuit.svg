@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Linxira circuit L concept">
+  <path fill="#20B8B0" d="M112 64h112v272h224v112H112Z"/>
+  <path d="M168 112v264h232M196 112v224l56 56h148" fill="none" stroke="#0D3437" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#F36F5D" stroke="#E9FFFF" stroke-width="6">
+    <circle cx="168" cy="160" r="15"/>
+    <circle cx="252" cy="392" r="15"/>
+    <circle cx="400" cy="376" r="15"/>
+  </g>
+</svg>

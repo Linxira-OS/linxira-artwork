@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Linxira reference frame L, sampled variant">
+  <path fill="#20B8B0" d="M112 64H224V336H448V448H112Z"/>
+  <path d="M164 112V392H392" fill="none" stroke="#0E1417" stroke-width="14" stroke-dasharray="22 13" stroke-linecap="square" stroke-linejoin="miter"/>
+  <g fill="#F36F5D">
+    <circle cx="164" cy="252" r="8"/>
+    <circle cx="252" cy="392" r="8"/>
+    <circle cx="392" cy="392" r="8"/>
+  </g>
+</svg>
