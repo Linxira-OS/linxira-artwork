@@ -13,6 +13,6 @@ jobs:
       - run: |
           test -f assets/ascii/linxira-logo-braille60.ansi
           test -f usr/share/linxira/linxira-logo.svg
-          test -f usr/share/doc/linxira-artwork/TRADEMARKS.md
+          test -f TRADEMARKS.md
           test -f assets/plymouth/linxira-plymouth-theme/watermark.png
           echo "artwork assets verified"
