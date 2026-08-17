@@ -27,6 +27,8 @@ assets/
     linxira-logo.svg     — 完整 Logo (棱镜图形)
     linxira-icon.svg     — 图标
     linxira-lockup.svg   — Logo + 文字组合
+    zeta-logo.svg       — Zeta 子品牌 LZ 标识 (深黑底 + 亮青绿 + 珊瑚光标)
+    zeta-icon.ico       — Zeta 图标 (16/32/48/64/128/256 多尺寸)
   wallpaper/             — 壁纸源文件 (SVG)
     linxira-wallpaper.svg      — 深色壁纸
     linxira-wallpaper-light.svg — 浅色壁纸
@@ -57,6 +59,22 @@ tools/
 3. **科学刻度** — 竖向和横向刻度强化科研仪器与工程标尺语义
 4. **测量终点** — 珊瑚色端点作为结果、边界和行动强调色
 5. **文字使用通用 Linux 字体族** — 避免依赖 Windows 字体导致渲染失败
+## Zeta 子品牌标识
+
+Zeta 是 Linxira 旗下终端编码代理。其 LZ 双字母标识（L = Linxira，Z = Zeta）复用主站 Scale L 设计语言：
+
+- **深黑底** `#0E1417`：图标自包含，深浅背景均成立
+- **亮青绿笔画** `#2AC9C1`：在主品牌青绿 `#20B8B0` 基础上略提亮，优化深色 UI 对比
+- **珊瑚色块光标** `#F36F5D`：呼应终端身份与测量终点强调色
+
+采用双字母是为避免与单字母 Z 的产品（如 GLM 桌面 CLI / Desktop）撞标。
+
+| 文件 | 用途 | 说明 |
+|------|------|------|
+| `zeta-logo.svg` | Zeta 标识 | LZ 双字母，深黑底 + 亮青绿 + 珊瑚光标 |
+| `zeta-icon.ico` | Zeta 图标 | 16/32/48/64/128/256 多尺寸，用于 favicon 与桌面图标 |
+
+源文件位于 `assets/logo/`，与站点 `public/assets/zeta-logo.*` 及 `zeta-logo.ico` 保持一致。
 
 ## 导出壁纸
 
