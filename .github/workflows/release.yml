@@ -4,7 +4,7 @@ name: Release on version bump
 # [linxira] 包仓库的 auto-bump 每日扫描正式 Release 并自动 bump/合并/发布。
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths: ["VERSION"]
   workflow_dispatch:
 
