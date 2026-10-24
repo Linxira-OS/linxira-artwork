@@ -5,7 +5,7 @@ Linxira brand assets listed below.
 
 ## Protected Assets
 
-The names **Linxira**, **Linxira OS**, the **Scale L** mark, Linxira wordmarks,
+The names **Linxira**, **Linxira OS**, the **Origin Frame** mark (formerly Scale L), Linxira wordmarks,
 logos, icons, wallpapers, Plymouth artwork, welcome banners, color
 combinations, and confusingly similar variations are Linxira brand assets.
 This notice does not claim ownership of third-party software or artwork that

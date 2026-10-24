@@ -14,7 +14,7 @@
 
 - 2026-08-03 从 Hyper-V 构建机 `/home/linxira-builder/rc6-work/linxira-plymouth-theme` 备份入库(此前仅存在于构建机,无仓库副本)
 - 构建机路径为 ISO 构建时 `build-direct-iso.sh --plymouth-theme-directory` 的输入
-- 启动动画 logo 以 `linxira-logo.svg`(Scale L 标记)为基准,与 UEFI/GRUB 视觉体系一致
+- 启动动画 logo 以 `linxira-logo.svg`(原点框 Origin Frame 标记)为基准,与 UEFI/GRUB 视觉体系一致
 
 ## 使用
 
