@@ -92,7 +92,8 @@ def art_ascii() -> str:
     return "\n".join("".join(ch.get(c, " ") for c in row).rstrip() for row in g)
 
 
-def art_braille() -> str:
+def _braille_rows():
+    """返回 15 行、每行 30 个 (字符, 颜色名|None)；坐标全对齐 2×4 点阵。"""
     dots = [[None] * 60 for _ in range(60)]
 
     def put(x0, y0, x1, y1, v):
@@ -104,18 +105,47 @@ def art_braille() -> str:
     put(8, 48, 52, 52, "ink"); put(8, 20, 12, 52, "ink")
     put(4, 4, 20, 12, "teal"); put(4, 4, 12, 20, "teal")
     put(16, 16, 24, 20, "coral"); put(18, 20, 22, 24, "coral")
-    lines = []
+    rows = []
     for br in range(0, 60, 4):
         line = []
         for bc in range(0, 60, 2):
-            mask = 0
+            mask, color = 0, None
             for dx in range(2):
                 for dy in range(4):
-                    if dots[br + dy][bc + dx]:
+                    c = dots[br + dy][bc + dx]
+                    if c:
                         mask |= BRAILLE_BITS[(dx, dy)]
-            line.append(chr(0x2800 + mask) if mask else " ")
-        lines.append("".join(line).rstrip())
-    return "\n".join(lines)
+                        color = color or c
+            line.append((chr(0x2800 + mask) if mask else " ", color))
+        rows.append(line)
+    return rows
+
+
+def art_braille() -> str:
+    """纯文本盲文（右裁剪；无颜色）。"""
+    return "\n".join("".join(ch for ch, _ in row).rstrip() for row in _braille_rows())
+
+
+# 深色终端调色板：墨要用亮色，否则框=背景色
+ANSI_RGB = {"ink": (0xE9, 0xEF, 0xF0), "teal": (0x2A, 0xC9, 0xC1), "coral": (0xF3, 0x6F, 0x5D)}
+
+
+def art_braille_ansi() -> str:
+    """真彩盲文（fastfetch file-raw 用）：逐格 38;2;r;g;b，行尾右裁剪。"""
+    out = []
+    for row in _braille_rows():
+        keep = len(row)
+        while keep and row[keep - 1][0] == " ":
+            keep -= 1
+        parts = []
+        for ch, color in row[:keep]:
+            if color is None:
+                parts.append(" ")
+                continue
+            r, g, b = ANSI_RGB[color]
+            parts.append(f"\x1b[38;2;{r};{g};{b}m{ch}\x1b[0m")
+        out.append("".join(parts))
+    return "\n".join(out)
 
 
 def write(path: pathlib.Path, text: str) -> None:
@@ -150,7 +180,7 @@ def main() -> int:
                                                + lockup() + "\n</svg>\n"),
         "usr/share/linxira/linxira-icon.svg": svg("Linxira icon", tile()),
         "assets/ascii/logo-ascii.txt": art_ascii() + "\n",
-        "assets/ascii/linxira-logo-braille60.ansi": art_braille() + "\n",
+        "assets/ascii/linxira-logo-braille60.ansi": art_braille_ansi() + "\n",
     }
     print("写入艺术仓:")
     for rel, text in files.items():
