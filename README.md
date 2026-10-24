@@ -159,6 +159,29 @@ tools/
 | `linxira-logo.svg` | 横排组合 | 标 + 字标（通用 Linux 字体族），用于品牌展示 |
 | `favicon.svg` / `linxira-icon.svg` | 图标 | 深墨圆角底 + 标（深浅背景都成立） |
 
+### 应用图标族（App icon family）
+
+规则：**共用同一个框（身份），框内图形区分功能（细节）**。例外只有门面 ——
+`linxira-icon` / `linxira`（welcome、开始菜单、系统标识）用裸标，不画内部图形；
+其余系统软件不得复用同一个标，否则启动器里会"全都长一样"。
+
+| 图标（主题名） | 框内图形 | 语义 |
+|---|---|---|
+| `org.linxira.CrashWatch` | 心电脉冲 | 监视/心跳 |
+| `org.linxira.RecoveryDiagnostics` | 回卷箭头 | 恢复 |
+| `linxira-update` | 向下箭头 | 安装/落地 |
+| `linxira-update-updates-available` | 珊瑚箭头 + 右下角徽标 | 有更新（徽标不与原点珊瑚点混淆） |
+| `linxira-package-center` | 2×2 网格 | 软件集合 |
+| `linxira-config-hub` | 三条滑杆 | 可调配置 |
+| `linxira-components` | 六边形 | 组件引擎 |
+| `linxira-completion-agent` | 四角星 | 生成 |
+| `linxira-gaming-manager` | 十字键 | 手柄 |
+| `linxira-hwd-detector` | 芯片 | 硬件检测 |
+| `linxira-kernel-manager` | 分层 | 内核/模块 |
+
+全部由 `tools/gen-brand-assets.py` 的 `APP_GLYPHS` 生成（深墨圆角底 + 标 + 图形），
+输出到 `usr/share/icons/hicolor/scalable/apps/`，随包安装（`cp -a usr`）。
+
 ### 关键设计决策
 
 1. **原点框（Origin Frame）** — 方形参考框架 + **一个接缝角**：左上角画成更粗的笔画（轴），由它补全方框，

@@ -154,6 +154,69 @@ def write(path: pathlib.Path, text: str) -> None:
     print(f"  {path.relative_to(ROOT) if path.is_relative_to(ROOT) else path}")
 
 
+LIGHT = "#E9EFF0"
+STROKE_ROUND = 'fill="none" stroke="%s" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"' % LIGHT
+
+# 图标族: 共用同一个框(身份), 框内图形区分功能(细节)。挂 tile 深底, 深浅面板都成立。
+APP_GLYPHS = {
+    # 崩溃监视: 心电脉冲(monitor 语义)
+    "org.linxira.CrashWatch":
+        f'<path d="M196 256H216L232 216L250 300L266 236L278 256H316" {STROKE_ROUND}/>',
+    # 恢复诊断: 回卷箭头(恢复)
+    "org.linxira.RecoveryDiagnostics":
+        f'<path d="M256 196A60 60 0 1 0 316 256" {STROKE_ROUND}/>'
+        f'<path d="M294 174L322 190L296 210" {STROKE_ROUND}/>',
+    # 更新(空闲): 向下箭头(落地/安装)
+    "linxira-update":
+        f'<path d="M256 196V300M212 258L256 302L300 258" {STROKE_ROUND}/>',
+    # 更新(有可用更新): 同上但珊瑚色 + 右下角珊瑚徽标(不与原点珊瑚点混淆)
+    "linxira-update-updates-available":
+        f'<path d="M256 196V300M212 258L256 302L300 258" fill="none" stroke="#F36F5D" '
+        f'stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>'
+        f'<circle cx="392" cy="392" r="34" fill="#F36F5D"/>',
+    # 软件中心: 2×2 网格(软件集合)
+    "linxira-package-center":
+        f'<g fill="none" stroke="{LIGHT}" stroke-width="20">'
+        '<rect x="200" y="200" width="46" height="46" rx="10"/>'
+        '<rect x="266" y="200" width="46" height="46" rx="10"/>'
+        '<rect x="200" y="266" width="46" height="46" rx="10"/>'
+        '<rect x="266" y="266" width="46" height="46" rx="10"/></g>',
+    # 配置中心: 三条滑杆(可调)
+    "linxira-config-hub":
+        f'<g stroke="{LIGHT}" stroke-width="20" stroke-linecap="round">'
+        '<path d="M196 216H316M196 256H316M196 296H316"/></g>'
+        f'<g fill="#0E1417" stroke="{LIGHT}" stroke-width="16">'
+        '<circle cx="232" cy="216" r="14"/><circle cx="288" cy="256" r="14"/>'
+        '<circle cx="252" cy="296" r="14"/></g>',
+    # 组件引擎: 六边形(组件)
+    "linxira-components":
+        f'<path d="M256 192L312 224V288L256 320L200 288V224Z" {STROKE_ROUND}/>',
+    # 补全代理: 四角星(生成)
+    "linxira-completion-agent":
+        f'<path d="M256 190C262 230 276 244 316 250C276 256 262 270 256 310'
+        f'C250 270 236 256 196 250C236 244 250 230 256 190Z" fill="{LIGHT}"/>',
+    # 游戏管理: 十字键(手柄)
+    "linxira-gaming-manager":
+        f'<path d="M238 198H274V238H314V274H274V314H238V274H198V238H238Z" fill="{LIGHT}"/>',
+    # 硬件检测: 芯片
+    "linxira-hwd-detector":
+        f'<g fill="none" stroke="{LIGHT}" stroke-width="20" stroke-linecap="round">'
+        '<rect x="216" y="216" width="80" height="80" rx="12"/>'
+        '<path d="M232 196V216M256 196V216M280 196V216M232 296V316M256 296V316'
+        'M280 296V316M196 232H216M196 256H216M196 280H216M296 232H316M296 256H316'
+        'M296 280H316"/></g>',
+    # 内核管理: 分层(内核/模块)
+    "linxira-kernel-manager":
+        f'<g fill="none" stroke="{LIGHT}" stroke-width="22" stroke-linejoin="round">'
+        '<path d="M196 240L256 208L316 240L256 272Z"/><path d="M196 272L256 304L316 272"/></g>',
+}
+
+
+def app_icon(name: str) -> str:
+    """深底 tile + 品牌标 + 该应用的框内图形。"""
+    return tile() + "\n" + APP_GLYPHS[name]
+
+
 def main() -> int:
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -182,6 +245,9 @@ def main() -> int:
         "assets/ascii/logo-ascii.txt": art_ascii() + "\n",
         "assets/ascii/linxira-logo-braille60.ansi": art_braille_ansi() + "\n",
     }
+    for name in APP_GLYPHS:
+        files[f"usr/share/icons/hicolor/scalable/apps/{name}.svg"] = svg(
+            f"Linxira {name} icon", app_icon(name))
     print("写入艺术仓:")
     for rel, text in files.items():
         write(ROOT / rel, text)
