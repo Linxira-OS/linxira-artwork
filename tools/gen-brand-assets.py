@@ -162,10 +162,6 @@ APP_GLYPHS = {
     # 崩溃监视: 心电脉冲(monitor 语义)
     "org.linxira.CrashWatch":
         f'<path d="M196 256H216L232 216L250 300L266 236L278 256H316" {STROKE_ROUND}/>',
-    # 恢复诊断: 回卷箭头(恢复)
-    "org.linxira.RecoveryDiagnostics":
-        f'<path d="M256 196A60 60 0 1 0 316 256" {STROKE_ROUND}/>'
-        f'<path d="M294 174L322 190L296 210" {STROKE_ROUND}/>',
     # 更新(空闲): 向下箭头(落地/安装)
     "linxira-update":
         f'<path d="M256 196V300M212 258L256 302L300 258" {STROKE_ROUND}/>',
