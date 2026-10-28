@@ -27,6 +27,9 @@ assets/
     linxira-l.svg        — primary mark (Origin Frame)
     linxira-l-simple.svg — simplified (frame + corner, no endpoint)
     linxira-l-mono.svg   — monochrome version
+    linxira-launcher-dark.svg  — launcher mark, light frame on transparent (dark panels)
+    linxira-launcher-light.svg — launcher mark, deep frame on transparent (light panels)
+    linxira-logo-on-dark.svg   — horizontal lockup with light ink (dark backgrounds)
     linxira-logo.svg     — horizontal lockup (mark + wordmark)
     linxira-icon.svg     — app icon (dark tile)
     favicon.svg          — favicon (dark tile)
@@ -54,6 +57,9 @@ tools/
 | `linxira-l-simple.svg` | Simplified | Frame + corner only (no endpoint), for very small sizes |
 | `linxira-l-mono.svg` | Monochrome | White ink, for dark backgrounds |
 | `linxira-logo.svg` | Lockup | Mark + "Linxira" wordmark (generic Linux font family) |
+| `linxira-launcher-dark.svg` | Launcher mark (dark) | Transparent background, frame in `#E9EFF0`; teal/coral unchanged |
+| `linxira-launcher-light.svg` | Launcher mark (light) | Transparent background, frame in `#0E1417`; teal/coral unchanged |
+| `linxira-logo-on-dark.svg` | Lockup (dark) | Frame and "Linxira" in `#E9EFF0`; "OS" stays teal |
 | `favicon.svg` / `linxira-icon.svg` | Icon | Mark on a deep-ink rounded tile (works on light and dark) |
 
 All vector assets are generated from one geometry by `tools/gen-brand-assets.py`
@@ -130,6 +136,9 @@ assets/
     linxira-l.svg        — 主标识（原点框 Origin Frame）
     linxira-l-simple.svg — 简化版（框 + 角，无端点）
     linxira-l-mono.svg   — 单色版
+    linxira-launcher-dark.svg  — 启动器标，白框透明底（深色面板）
+    linxira-launcher-light.svg — 启动器标，深框透明底（浅色面板）
+    linxira-logo-on-dark.svg   — 横排组合深底版（白墨）
     linxira-logo.svg     — 横排组合（标 + 字标）
     linxira-icon.svg     — 应用图标（深色底）
     favicon.svg          — 站点图标（深色底）
@@ -157,6 +166,9 @@ tools/
 | `linxira-l-simple.svg` | 简化版 | 适合小尺寸，保留核心元素 |
 | `linxira-l-mono.svg` | 单色版 | 白色单色，用于深色背景 |
 | `linxira-logo.svg` | 横排组合 | 标 + 字标（通用 Linux 字体族），用于品牌展示 |
+| `linxira-launcher-dark.svg` | 启动器标（深底） | 透明底，外框 `#E9EFF0`；青与红不变 |
+| `linxira-launcher-light.svg` | 启动器标（浅底） | 透明底，外框 `#0E1417`；青与红不变 |
+| `linxira-logo-on-dark.svg` | 横排组合（深底） | 外框与 "Linxira" 用 `#E9EFF0`，"OS" 保持青绿 |
 | `favicon.svg` / `linxira-icon.svg` | 图标 | 深墨圆角底 + 标（深浅背景都成立） |
 
 ### 应用图标族（App icon family）

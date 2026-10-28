@@ -6,6 +6,8 @@
 
 产出（覆盖写入同名文件，保持打包路径契约不变）:
   assets/logo/linxira-l.svg          主标（三色，透明底）
+  assets/logo/linxira-launcher-dark.svg  启动器标（透明底，白框，深色底用）
+  assets/logo/linxira-launcher-light.svg 启动器标（透明底，深框，浅色底用）
   assets/logo/linxira-l-mono.svg     单色（深墨，浅底用）
   assets/logo/linxira-l-simple.svg   简化（去端点，小尺寸用）
   assets/logo/favicon.svg            图标（深底圆角方块 + 标）
@@ -57,14 +59,17 @@ def tile(rounded: int = 96) -> str:
             + "\n  </g>")
 
 
-def lockup() -> str:
-    """横排：标 + 字标。字标用通用 Linux 字体族（旧设计决策 #5：不依赖 Windows 字体）。"""
+def lockup(ink: str = INK) -> str:
+    """横排：标 + 字标。字标用通用 Linux 字体族（旧设计决策 #5：不依赖 Windows 字体）。
+
+    ink 同时决定外框与 "Linxira" 字标的颜色：浅底用深墨，深底用亮墨。
+    """
     return (
         '  <g transform="translate(24 96) scale(0.62)">\n'
-        + "\n".join("  " + line for line in mark().splitlines())
+        + "\n".join("  " + line for line in mark((ink, TEAL, CORAL)).splitlines())
         + "\n  </g>\n"
         + '  <text x="392" y="252" font-family="system-ui, \'Noto Sans\', \'DejaVu Sans\', sans-serif" '
-          'font-size="104" font-weight="600" letter-spacing="2" fill="' + INK + '">Linxira</text>\n'
+          'font-size="104" font-weight="600" letter-spacing="2" fill="' + ink + '">Linxira</text>\n'
         + '  <text x="394" y="310" font-family="system-ui, \'Noto Sans\', \'DejaVu Sans\', sans-serif" '
           'font-size="34" letter-spacing="9" fill="' + TEAL + '">OS</text>'
     )
@@ -229,6 +234,15 @@ def main() -> int:
                                              mark((MONO_INK, MONO_INK, MONO_INK))),
         "assets/logo/linxira-l-simple.svg": svg("Linxira Origin Frame mark (simplified)",
                                                mark(dot=False)),
+        # 深/浅底启动器标：透明底，只换外框色（青与红永不改）。
+        "assets/logo/linxira-launcher-dark.svg": svg(
+            "Linxira Origin Frame mark (for dark backgrounds)", mark((LIGHT, TEAL, CORAL))),
+        "assets/logo/linxira-launcher-light.svg": svg(
+            "Linxira Origin Frame mark (for light backgrounds)", mark((INK, TEAL, CORAL))),
+        "assets/logo/linxira-logo-on-dark.svg": ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 512" '
+                                                 'width="1024" height="512" role="img" '
+                                                 'aria-label="Linxira logo (for dark backgrounds)">\n'
+                                                 + lockup(LIGHT) + "\n</svg>\n"),
         "assets/logo/favicon.svg": svg("Linxira icon", tile()),
         "assets/logo/linxira-icon.svg": svg("Linxira icon", tile()),
         "assets/logo/linxira-logo.svg": ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 512" '
@@ -238,6 +252,11 @@ def main() -> int:
                                                'width="1024" height="512" role="img" aria-label="Linxira logo">\n'
                                                + lockup() + "\n</svg>\n"),
         "usr/share/linxira/linxira-icon.svg": svg("Linxira icon", tile()),
+        # 系统路径契约：DMS/安装器等按绝对路径引用，内容与 assets 同名文件一致。
+        "usr/share/linxira/linxira-launcher-dark.svg": svg(
+            "Linxira Origin Frame mark (for dark backgrounds)", mark((LIGHT, TEAL, CORAL))),
+        "usr/share/linxira/linxira-launcher-light.svg": svg(
+            "Linxira Origin Frame mark (for light backgrounds)", mark((INK, TEAL, CORAL))),
         "assets/ascii/logo-ascii.txt": art_ascii() + "\n",
         "assets/ascii/linxira-logo-braille60.ansi": art_braille_ansi() + "\n",
     }
@@ -254,6 +273,8 @@ def main() -> int:
             "assets/logo/linxira-l.svg": "linxira-l.svg",
             "assets/logo/linxira-l-mono.svg": "linxira-l-mono.svg",
             "assets/logo/linxira-l-simple.svg": "linxira-l-simple.svg",
+            # 站点那两份（svg/png）原本手工加的，svg 由这里接管以免两处内容漂移。
+            "assets/logo/linxira-launcher-dark.svg": "linxira-l-on-dark.svg",
             "assets/logo/favicon.svg": "favicon.svg",
             "assets/lineup": None,
         }
